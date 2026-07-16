@@ -31,17 +31,23 @@ int main(){
 
     dps[0] = nums[0];
 
-    for(int i=1;i<n;i++){
+    int prev2 = max(0,nums[0]);
+    int prev1 = max(prev2,nums[1]);
+
+    for(int i=2;i<n;i++){
         int take = nums[i];
-        if(i > 1) take += dps[i-2];
+        if(i > 1) take += prev2;
 
-        int nottake = dps[i-1];
+        int nottake = prev1;
 
-        dps[i] = max(take,nottake);
+        int curr = max(take,nottake);
+
+        prev2 = prev1;
+        prev1 = curr;
     }
      
     cout<<endl;
-    cout<<dps[n-1];
+    cout<<prev1;
 
     return 0;
 }
