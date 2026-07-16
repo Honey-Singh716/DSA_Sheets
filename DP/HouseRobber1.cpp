@@ -33,9 +33,15 @@ int rob(vector<int>& nums,int st,int end){
 }
 
 int main(){
-    int n = 4;
-    vector<int> nums = {12,22,13,23};
     
+    vector<int> nums = {12,20,40};
+    int n = nums.size();
+    
+    if(n == 1){
+        cout<<nums[0];
+        return 0;
+    }
+
     int money = max(rob(nums,0,n-1),rob(nums,1,n));
 
     cout<<money<<endl;

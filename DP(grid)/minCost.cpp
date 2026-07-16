@@ -12,20 +12,17 @@ int count(int i,int j,vector<vector<int>>& nums,vector<vector<int>>& dp){
     }
 
     if(i < 0 || j < 0){
-        return INT_MAX;
+        return 1e9;
     }
     
     if(dp[i][j] != -1){
         return dp[i][j];
     }
 
-    int upPath = count(i-1,j,nums,dp);
-    int leftPath = count(i,j-1,nums,dp);
+    int upPath = nums[i][j] + count(i-1,j,nums,dp);
+    int leftPath = nums[i][j] + count(i,j-1,nums,dp);
 
-    int up = (upPath == INT_MAX) ? INT_MAX : nums[i][j] + upPath;
-    int left = (leftPath == INT_MAX) ? INT_MAX : nums[i][j] + leftPath;
-
-    return dp[i][j] = min(up,left);
+    return dp[i][j] = min(upPath,leftPath);
 }
 
 int main(){

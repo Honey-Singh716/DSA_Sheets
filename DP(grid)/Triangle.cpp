@@ -22,6 +22,7 @@ int count1(vector<vector<int>>& nums,vector<vector<int>>& dp){
 
     int n = nums.size();
     
+    //base case
     for(int j = 0;j<n;j++){
         dp[n-1][j] = nums[n-1][j];
     }

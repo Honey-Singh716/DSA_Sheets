@@ -11,10 +11,6 @@ int rob(vector<int>& nums){
         return nums[0];
     }
 
-    if(n == 2){
-        return 0;
-    }
-
     int prev2 = nums[0];
     int prev1 = max(prev2,nums[1]);
     int curr;
