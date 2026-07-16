@@ -18,12 +18,30 @@ int f(int idx,vector<int>& nums,vector<int>& dp){
 }
 
 int main(){
-    int n = 3;
+    int n = 4;
     vector<int> dp(n,-1);
     
-    vector<int> nums = {1,2,4};
+    vector<int> nums = {1,3,2,4};
         
     cout<<f(n-1,nums,dp);
+    
+    //tabulation
+
+    vector<int> dps(n,0);
+
+    dps[0] = nums[0];
+
+    for(int i=1;i<n;i++){
+        int take = nums[i];
+        if(i > 1) take += dps[i-2];
+
+        int nottake = dps[i-1];
+
+        dps[i] = max(take,nottake);
+    }
+     
+    cout<<endl;
+    cout<<dps[n-1];
 
     return 0;
 }
