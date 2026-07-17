@@ -46,7 +46,7 @@ int main(){
                 hash[i] = prev;
 
                 if(maxi < dps[i]){
-                    maxi = max(maxi , dps[i]);
+                    maxi = dps[i];
                     lastindex = i;
                 }
             }
